@@ -37,7 +37,11 @@ export default {
   },
   methods: {
     getWeather: async function (location) {
-      const res = await fetch(`http://api.openweathermap.org/data/2.5/find?q=${location}&units=metric&appid=dfe15a41201d660911d013203832e676`)
+      const res = await fetch(`http://api.openweathermap.org/data/2.5/find?q=${location}&units=metric&appid=dfe15a41201d660911d013203832e676`, {
+        headers: {
+          'Access-Control-Allow-Origin': '*'
+        }
+      })
       const resJSON = await res.json()
       this.currentLocation = resJSON.list[0]
     }
