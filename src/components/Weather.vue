@@ -24,6 +24,8 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   data () {
     return {
@@ -37,13 +39,8 @@ export default {
   },
   methods: {
     getWeather: async function (location) {
-      const res = await fetch(`http://api.openweathermap.org/data/2.5/find?q=${location}&units=metric&appid=dfe15a41201d660911d013203832e676`, {
-        headers: {
-          'Access-Control-Allow-Origin': '*'
-        }
-      })
-      const resJSON = await res.json()
-      this.currentLocation = resJSON.list[0]
+      const { data } = await axios.get(`http://api.openweathermap.org/data/2.5/find?q=${location}&units=metric&appid=dfe15a41201d660911d013203832e676`)
+      this.currentLocation = data.list[0]
     }
   },
   watch: {
