@@ -39,7 +39,7 @@ export default {
   },
   methods: {
     getWeather: async function (location) {
-      const { data } = await axios.get(`http://api.openweathermap.org/data/2.5/find?q=${location}&units=metric&appid=dfe15a41201d660911d013203832e676`)
+      const { data } = await axios.get(`https://api.openweathermap.org/data/2.5/find?q=${location}&units=metric&appid=dfe15a41201d660911d013203832e676`)
       this.currentLocation = data.list[0]
     }
   },
